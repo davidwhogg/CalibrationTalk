@@ -23,24 +23,23 @@
 \begin{frame}
   \frametitle{summary}
   \begin{itemize}
-  \item exoplanet research is shaped by engineering and data analysis challenges
+  \item \sdss\ switched from a standards-based calibration to self-calibration.
     \begin{itemize}
-    \item I focus on these issues
+    \item no use of standard stars whatsoever (except\ldots)
+    \item extremely successful
+    \item required certain kinds of non-trivial observational redundancy
     \end{itemize}
-  \item \emph{search} involves extracting tiny, sparse signals from (huge) data sets
+  \item New surveys plan single-pass wide-field imaging surveys.
     \begin{itemize}
-    \item noise modeling and marginalization of systematics
+    \item \euclid, \wfirst
+    \item imaging with a repeated dither pattern on a grid is a bad, bad idea
+    \item patterns far better for calibration can be equally efficient
     \end{itemize}
-  \item \emph{characterization} leaves us with noisy individual-planet measurements
-  \item \emph{population inferences} require expensive noise propagation
+  \item Ideas from causal inference bring new, far crazier ideas to self-calibration.
     \begin{itemize}
-    \item hierarchical probabilistic inference
-    \end{itemize}
-  \item Earth-like planets are plentiful in our Galaxy
-    \begin{itemize}
-    \item a percent (or more) of Sun-like stars host Earth-like planets
-    \item the Solar System is not obviously typical in any way
-    \item little is known about Jupiter-like planets
+    \item surveys that never repeat and have no redundancy
+    \item \kepler\ and \kt\ lightcurves
+    \item \wfc\ flat-field
     \end{itemize}
   \end{itemize}
 \end{frame}}
@@ -54,17 +53,112 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{the NASA \kepler\ Mission}
+  \frametitle{Potted \sdss\ calibraiton history}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\sdss\ self-calibration: method}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\sdss\ self-calibration: results}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\sdss\ self-calibration: comments}
   \begin{itemize}
-  \item stared at 150,000 stars for 4 years (30-min cadence)
+  \item millions of star parameters, tens of thousands of calibration parameters
     \begin{itemize}
-    \item 70,000 measurements per star
-    \item all data completely public
+    \item nonetheless over-constrained
+    \item made convex by approximation
     \end{itemize}
-  \item looking for exoplanet transit signals
-  \item found \emph{thousands} of exoplanets (candidates)
+  \item still used AB zeropoints of BD+17~4708
+  \item fundamentally about \emph{obtaining consistency}
+    \begin{itemize}
+    \item requires same star to hit different detector positions
+    \item appropriate redundancy
+    \end{itemize}
   \end{itemize}
 \end{frame}
+
+\begin{frame}
+  \frametitle{imaging survey design}
+\end{frame}
+
+\begin{frame}
+  \frametitle{imaging survey design: comments}
+  \begin{itemize}
+  \item recommend off-by-one and psuedo-random coverage patterns
+    \begin{itemize}
+    \item move the same star to different detector positions
+    \item (give more uniform coverage than grids)
+    \item (don't take additional time)
+    \end{itemize}
+  \item challenges are social
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{radical self-calibration}
+\end{frame}
+
+\begin{frame}
+  \frametitle{the NASA \kepler\ \& \kt\ Missions}
+  \begin{itemize}
+  \item deliberately try to fix stars in detector coordinates
+    \begin{itemize}
+    \item no redundancy (of the kind we want)
+    \item pessimal for self-calibration
+    \end{itemize}
+  \item most detector pixels never get telemetered down
+    \begin{itemize}
+    \item very sparse information on the focal plane
+    \end{itemize}
+  \item instrument and flat-field model not good enough
+    \begin{itemize}
+    \item routinely performing photometry with \emph{precision} around $10^5$
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{radical self-calibration: causal idea}
+  \begin{itemize}
+  \item if a star's behavior can be predicted confidently by
+    \emph{other stars} then that behavior must be being imprinted by
+    the spacecraft
+  \item using these ideas to separate spacecraft-induced from
+    intrinsic stellar variability (Wang \etal, in preparation)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\kt\ calibration {\footnotesize (Foreman-Mackey \etal, arXiv:1502.04715)}}
+  ~\hfill
+  \includegraphics<1>[trim=100 100 100 100, clip, height=\figureheight]{brownbag/brownbagp10.pdf}
+  \includegraphics<2>[trim=100 100 100 100, clip, height=\figureheight]{brownbag/brownbagp11.pdf}
+  \includegraphics<3>[trim=100 100 100 100, clip, height=\figureheight]{brownbag/brownbagp14.pdf}
+  \includegraphics<4>[trim=100 100 100 100, clip, height=\figureheight]{brownbag/brownbagp15.pdf}
+  \includegraphics<5>[trim=100 100 100 100, clip, height=\figureheight]{brownbag/brownbagp17.pdf}
+\end{frame}
+
+\begin{frame}
+  \frametitle{NASA \hst\ \wfc\ imaging {\small (Vakili, Fadely, Hogg, in prep)}}
+  \begin{itemize}
+  \item could we calibrate with no repeat observations of any kind?
+  \item images have to be generated by mixtures of point sources!
+  \item simultaneously model PSF and every scene
+  \item residuals that are consistent in detector position are flat-field (or vignetting) issues.
+    \begin{itemize}
+    \item a calibration of \hst\ that makes no use whatsoever of any calibration observations
+    \item (currently vapor-ware)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\conclusions
+
+\end{document}
 
 \begin{frame}
   \frametitle{the NASA \kepler\ Mission}
@@ -104,6 +198,8 @@
   \item found \emph{thousands} of exoplanets (candidates)
   \end{itemize}
 \end{frame}
+
+\conclusions
 
 \end{document}
 
