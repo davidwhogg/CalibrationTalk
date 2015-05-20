@@ -1,4 +1,5 @@
 \usepackage{amssymb,amsmath,mathrsfs}
+\usepackage{epstopdf}
 \usecolortheme{default}
 
 % this one is debatable
@@ -32,6 +33,11 @@
 \setlength{\figurewidth}{\textwidth}
 \newlength{\figureheight}
 \setlength{\figureheight}{0.9\textheight}
+
+%%% PostScript insanity
+\epstopdfsetup{suffix=}
+\DeclareGraphicsExtensions{.ps}
+\DeclareGraphicsRule{.ps}{pdf}{.pdf}{`ps2pdf -dEPSCrop -dNOSAFER #1 \noexpand\OutputFile}
 
 %%% text commands
 \newcommand{\project}[1]{\textsl{#1}}

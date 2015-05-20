@@ -25,19 +25,19 @@
   \begin{itemize}
   \item \sdss\ switched from a standards-based calibration to self-calibration.
     \begin{itemize}
-    \item no use of standard stars whatsoever (except\ldots)
-    \item extremely successful
+    \item \emph{no use of standard stars} whatsoever (except\ldots)
+    \item extremely successful (exceeds spec)
     \item required certain kinds of non-trivial observational redundancy
     \end{itemize}
   \item New surveys plan single-pass wide-field imaging surveys.
     \begin{itemize}
     \item \euclid, \wfirst
-    \item imaging with a repeated dither pattern on a grid is a bad, bad idea
+    \item imaging with a repeated dither pattern on a grid is a \emph{bad, bad idea}
     \item patterns far better for calibration can be equally efficient
     \end{itemize}
   \item Ideas from causal inference bring new, far crazier ideas to self-calibration.
     \begin{itemize}
-    \item surveys that never repeat and have no redundancy
+    \item surveys that \emph{never repeat} and have \emph{no redundancy}
     \item \kepler\ and \kt\ lightcurves
     \item \wfc\ flat-field
     \end{itemize}
@@ -54,23 +54,61 @@
 
 \begin{frame}
   \frametitle{Potted \sdss\ calibration history}
+  \begin{itemize}
+  \item original plan was to calibrate (with the \project{PT}) a network of standard stars
+  \item flat-field obtained by ``sky flat''
+    \begin{itemize}
+    \item \emph{this is generally a terrible idea!}
+    \end{itemize}
+  \item realized that there was a huge amount of calibration information in the science data
+    \begin{itemize}
+    \item consistency requirements are incredibly constraining
+    \item \emph{we ordered cross-scans}
+    \end{itemize}
+  \item Roweis showed us how to tractably fit a huge model to all the science data
+  \item \project{PT} became a (very valuable) photometricity monitor
+    \begin{itemize}
+    \item my most highly cited first-author paper!
+    \item there is no use of the original calibration program in post-DR8 \sdss\ data
+    \end{itemize}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{\sdss\ self-calibration {\footnotesize (Padmanabhan \etal, arXiv:XXX)}}
+  ~\hfill%
+  \includegraphics<1>[width=0.8\figurewidth]{./0703454v2/geom.pdf}
+  \includegraphics<2>[width=0.95\figurewidth]{./0703454v2/sky_coverage.pdf}
 \end{frame}
 
 \begin{frame}
   \frametitle{\sdss\ self-calibration {\footnotesize (Padmanabhan \etal, arXiv:XXX)}}
+  \begin{eqnarray}
+  \chi^2 &=& \sum_i \chi_i^2 \\
+  \chi_i^2 &=& \sum_{j\in O_i} \frac{[2.5\,\log C_{ij} + m_i - a_j - k(t_{ij})\,x_{ij} - f(y_{ij})]^2}{\sigma_{ij}^2} 
+  \end{eqnarray}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\sdss\ self-calibration {\footnotesize (Padmanabhan \etal, arXiv:XXX)}}
+  ~\hfill%
+  \includegraphics<1>[width=0.6\figurewidth]{./0703454v2/plotflat.pdf}
+  \includegraphics<2>[height=\figureheight]{./0703454v2/plotrunresids.pdf}
+  \includegraphics<3>[width=0.7\figurewidth]{./0703454v2/site_stable.pdf}
 \end{frame}
 
 \begin{frame}
   \frametitle{\sdss\ self-calibration: comments}
   \begin{itemize}
+  \item the self-calibration exceeded survey requirements
+    \begin{itemize}
+    \item now PanSTARRS confirms this (Finkbeiner, priv.\,comm.)
+    \end{itemize}
   \item millions of star parameters, tens of thousands of calibration parameters
     \begin{itemize}
+    \item flat-fields are only one-dimensional!
     \item nonetheless over-constrained
-    \item made convex by approximation
+    \item made inference convex by approximation
     \end{itemize}
   \item still used AB zeropoints of BD+17~4708
   \item fundamentally about \emph{obtaining consistency}
@@ -78,18 +116,39 @@
     \item requires same star to hit different detector positions
     \item appropriate redundancy
     \end{itemize}
+  \item there are \emph{far more photons} in the science data than any calibration program
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{imaging survey design {\footnotesize (Holmes, Hogg, Rix, arXiv:1203.6255)}}
   ~\hfill%
-  \includegraphics<1>[height=\figureheight]{./1203.6255v2/simple_surveys.pdf}
-  \includegraphics<2>[height=\figureheight]{./1203.6255v2/A_5000_ff.png}
-  \includegraphics<3>[height=\figureheight]{./1203.6255v2/B_1114_ff.png}
-  \includegraphics<4>[height=\figureheight]{./1203.6255v2/C_24_ff.png}
-  \includegraphics<5>[height=\figureheight]{./1203.6255v2/D_11_ff.png}
-  \includegraphics<6>[height=\figureheight]{./1203.6255v2/simple_surveys.pdf}
+  \includegraphics[height=\figureheight]{./1203.6255v2/simple_surveys.pdf}
+\end{frame}
+\begin{frame}
+  \frametitle{imaging survey design {\footnotesize (Holmes, Hogg, Rix, arXiv:1203.6255)}}
+  ~\hfill%
+  \emph{A:}~\includegraphics[height=\figureheight]{./1203.6255v2/A_5000_ff.png}
+\end{frame}
+\begin{frame}
+  \frametitle{imaging survey design {\footnotesize (Holmes, Hogg, Rix, arXiv:1203.6255)}}
+  ~\hfill%
+  \emph{B:}~\includegraphics[height=\figureheight]{./1203.6255v2/B_1114_ff.png}
+\end{frame}
+\begin{frame}
+  \frametitle{imaging survey design {\footnotesize (Holmes, Hogg, Rix, arXiv:1203.6255)}}
+  ~\hfill%
+  \emph{C:}~\includegraphics[height=\figureheight]{./1203.6255v2/C_24_ff.png}
+\end{frame}
+\begin{frame}
+  \frametitle{imaging survey design {\footnotesize (Holmes, Hogg, Rix, arXiv:1203.6255)}}
+  ~\hfill%
+  \emph{D:}~\includegraphics[height=\figureheight]{./1203.6255v2/D_11_ff.png}
+\end{frame}
+\begin{frame}
+  \frametitle{imaging survey design {\footnotesize (Holmes, Hogg, Rix, arXiv:1203.6255)}}
+  ~\hfill%
+  \includegraphics[height=\figureheight]{./1203.6255v2/simple_surveys.pdf}
 \end{frame}
 
 \begin{frame}
@@ -101,12 +160,17 @@
     \item (give more uniform coverage than grids)
     \item (don't take additional time)
     \end{itemize}
-  \item challenges are social
+  \item implementation challenges are \emph{social}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{radical self-calibration}
+  \begin{itemize}
+  \item What if you are never given any proper redundancy?
+  \item What if you literally only look at any star in one detector location?
+  \item What if there is no calibration program whatsoever?
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -116,6 +180,7 @@
     \begin{itemize}
     \item no redundancy (of the kind we want)
     \item pessimal for self-calibration
+    \item no calibration program
     \end{itemize}
   \item most detector pixels never get telemetered down
     \begin{itemize}
@@ -124,6 +189,7 @@
   \item instrument and flat-field model not good enough
     \begin{itemize}
     \item routinely performing photometry with \emph{precision} around $10^5$
+    \item \emph{!!}
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -203,6 +269,15 @@
     \end{itemize}
   \item looking for exoplanet transit signals
   \item found \emph{thousands} of exoplanets (candidates)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{related efforts}
+  \begin{itemize}
+  \item data-driven models of stars
+  \item CMB experiments
+  \item spacecraft attitude determination
   \end{itemize}
 \end{frame}
 
